@@ -35,36 +35,79 @@ Paper beats Rock
 function playRound(playerSelection, computerSelection) {
 
     // return String of Win, Lose or Tie result
-    switch(true) {
-
-        // Win Conditions
-        case playerSelection == "Rock" && computerSelection == "Scissors":
-        case playerSelection == "Scissors" && computerSelection == "Paper":
-        case playerSelection == "Paper" && computerSelection == "Rock":
-
-            return "You Win!";
-            break;
+    function matchResult() {
         
-        // Lose Conditions
-        case playerSelection == "Rock" && computerSelection == "Paper":
-        case playerSelection == "Scissors" && computerSelection == "Rock":
-        case playerSelection == "Paper" && computerSelection == "Scissors":
+        switch(true) {
 
-            return "You Lose!";
-            break;
+            // Win Conditions
+            case playerSelection == "Rock" && computerSelection == "Scissors":
+            case playerSelection == "Scissors" && computerSelection == "Paper":
+            case playerSelection == "Paper" && computerSelection == "Rock":
 
-        // Tie Condition
-        case playerSelection === computerSelection:
+                return "You Win!";
+                break;
+            
+            // Lose Conditions
+            case playerSelection == "Rock" && computerSelection == "Paper":
+            case playerSelection == "Scissors" && computerSelection == "Rock":
+            case playerSelection == "Paper" && computerSelection == "Scissors":
 
-            return "It\'s a Tie!"
-            break;
+                return "You Lose!";
+                break;
+
+            // Tie Condition
+            case playerSelection === computerSelection:
+
+                return "It\'s a Tie!"
+                break;
+        }
     }
 
+    console.log(matchResult());
 
+    // return String of match breakdown
+    function matchBreakdown() {
+        
+        switch(true) {
+
+            // Rock beats Scissors
+            case playerSelection == "Rock" && computerSelection == "Scissors":
+            case playerSelection == "Scissors" && computerSelection == "Rock":
+
+                return "Rock beats Scissors!";
+                break;
+            
+            // Scissors beats Paper
+            case playerSelection == "Scissors" && computerSelection == "Paper":
+            case playerSelection == "Paper" && computerSelection == "Scissors":
     
+                return "Scissors beats Paper!";
+                break;
+
+            // Paper beats Rock
+            case playerSelection == "Rock" && computerSelection == "Paper":
+            case playerSelection == "Paper" && computerSelection == "Rock":
+    
+                return "Paper beats Rock!";
+                break;
+            
+            default:
+                return "";
+                break;
+        
+        }
+
+    }
+
+    console.log(matchBreakdown());
+
+    return matchResult() + " " + matchBreakdown();
 
 }
 
-let result = playRound("Rock", "Rock")
+let result = playRound("Rock", "Paper");
 
 console.log(result);
+
+
+
