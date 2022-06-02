@@ -9,19 +9,17 @@ function computerPlay() {
     switch (randomValue) {
 
         case 1:
-            return "Rock"
+            return "rock"
             break;
         case 2:
-            return "Paper"
+            return "paper"
             break;
         case 3:
-            return "Scissors"
+            return "scissors"
 
     }
 
 }
-
-console.log(computerPlay());
 
 /*
 Create function that plays single round of RPS. Takes two parameters, then returns string that declares winner of round. Input to be case-insensitive.
@@ -31,8 +29,10 @@ Scissors beats Paper
 Paper beats Rock
 
 */
-
+// play a single round of Rock, Paper, Scissors and declare winner
 function playRound(playerSelection, computerSelection) {
+
+    playerSelection.toLowerCase();
 
     // return String of Win, Lose or Tie result
     function matchResult() {
@@ -40,17 +40,17 @@ function playRound(playerSelection, computerSelection) {
         switch(true) {
 
             // Win Conditions
-            case playerSelection == "Rock" && computerSelection == "Scissors":
-            case playerSelection == "Scissors" && computerSelection == "Paper":
-            case playerSelection == "Paper" && computerSelection == "Rock":
+            case playerSelection == "rock" && computerSelection == "scissors":
+            case playerSelection == "scissors" && computerSelection == "paper":
+            case playerSelection == "paper" && computerSelection == "rock":
 
                 return "You Win!";
                 break;
             
             // Lose Conditions
-            case playerSelection == "Rock" && computerSelection == "Paper":
-            case playerSelection == "Scissors" && computerSelection == "Rock":
-            case playerSelection == "Paper" && computerSelection == "Scissors":
+            case playerSelection == "rock" && computerSelection == "paper":
+            case playerSelection == "scissors" && computerSelection == "rock":
+            case playerSelection == "paper" && computerSelection == "scissors":
 
                 return "You Lose!";
                 break;
@@ -71,22 +71,22 @@ function playRound(playerSelection, computerSelection) {
         switch(true) {
 
             // Rock beats Scissors
-            case playerSelection == "Rock" && computerSelection == "Scissors":
-            case playerSelection == "Scissors" && computerSelection == "Rock":
+            case playerSelection == "rock" && computerSelection == "scissors":
+            case playerSelection == "scissors" && computerSelection == "rock":
 
                 return "Rock beats Scissors!";
                 break;
             
             // Scissors beats Paper
-            case playerSelection == "Scissors" && computerSelection == "Paper":
-            case playerSelection == "Paper" && computerSelection == "Scissors":
+            case playerSelection == "scissors" && computerSelection == "paper":
+            case playerSelection == "paper" && computerSelection == "scissors":
     
                 return "Scissors beats Paper!";
                 break;
 
             // Paper beats Rock
-            case playerSelection == "Rock" && computerSelection == "Paper":
-            case playerSelection == "Paper" && computerSelection == "Rock":
+            case playerSelection == "rock" && computerSelection == "paper":
+            case playerSelection == "paper" && computerSelection == "rock":
     
                 return "Paper beats Rock!";
                 break;
@@ -105,7 +105,7 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-let result = playRound("Rock", "Paper");
+let result = playRound("rock", computerPlay());
 
 console.log(result);
 
