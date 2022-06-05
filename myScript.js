@@ -1,7 +1,7 @@
-const playerSelection = "rock";
+const playerSelection = prompt("Input");
 const computerSelection = computerPlay();
 
-// Function that will randomly return 'Rock', 'Paper' or 'Scissors'.
+// Generate computer input for match
 function computerPlay() {
 
     // Return random value between 1 to 3
@@ -23,8 +23,8 @@ function computerPlay() {
 
 }
 
-// Play a single round of Rock, Paper, Scissors and increments scores
-function playRound(playerSelection, computerSelection) {
+// Play a single match of Rock, Paper, Scissors
+function playMatch(playerSelection, computerSelection) {
 
     playerSelection.toLowerCase(); // make all player input lowercase
         
@@ -55,19 +55,20 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
+// Return results of match to print
 function matchAnnounce() {
 
     function matchResult() {
 
-        if (result == "win") {
+        if (playround == "win") {
     
             return "You Win!"
     
-        } else if (result == "lose") {
+        } else if (playround == "lose") {
     
             return "Computer Wins!"
     
-        } else if (result == "tie") {
+        } else if (playround == "tie") {
     
             return "It\'s a Tie!"
         }
@@ -111,37 +112,42 @@ function matchAnnounce() {
 
 }
 
-let result = playRound(playerSelection, computerSelection);
-console.log(result)
+let playround = playMatch(playerSelection, computerSelection);
 
+let playerScore = 0;
+let computerScore = 0;
+
+
+// Increment Scores according to who wins
 function game() {
 
-    let playerScore = 0;
-    let computerScore = 0;
+    while (playerScore < 5 && computerScore < 5) {
 
-    for (let i = 0; i < 5; i++) {
+        playMatch(playerSelection, computerSelection);
 
-        playRound(playerSelection, computerSelection);
+        if (playround == "win") {
+
+            playerScore++;
+
+        } else if (playround == "lose") {
+
+            computerScore++;
+
+        } else if (playround == "tie") {
+
+            break
+
+        }
 
     }
 
 }
 
-
+game();
 
 console.log(matchAnnounce())
-
-/*
-
-when user inputs Rock, Paper or Scissor
-     -return playerScore++ or computerScore++ or no change
-     -print match result
-
-when playerScore or computerScore reaches 5, stop game and announce overall winner
-
-*/
-
-
+console.log("Player Score: " + playerScore);
+console.log("Computer Score: " + computerScore);
 
 
 
