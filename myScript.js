@@ -1,6 +1,3 @@
-const playerSelection = prompt("Input");
-const computerSelection = computerPlay();
-
 // Generate computer input for match
 function computerPlay() {
 
@@ -56,26 +53,26 @@ function playMatch(playerSelection, computerSelection) {
 }
 
 // Return results of match to print
-function matchAnnounce() {
+function matchAnnounce(matchResult, playerSelection, computerSelection) {
 
-    function matchResult() {
+    function getResult(matchResult) {
 
-        if (playround == "win") {
+        if (matchResult == "win") {
     
             return "You Win!"
     
-        } else if (playround == "lose") {
+        } else if (matchResult == "lose") {
     
             return "Computer Wins!"
     
-        } else if (playround == "tie") {
+        } else if (matchResult == "tie") {
     
             return "It\'s a Tie!"
         }
     
     }
     
-    function matchBreakdown() {
+    function getBreakdown(playerSelection, computerSelection) {
             
         switch(true) {
     
@@ -107,47 +104,56 @@ function matchAnnounce() {
     
     }
 
-    return matchResult() + " " + matchBreakdown()
+    return getResult(matchResult) + " " + getBreakdown(playerSelection, computerSelection)
     
 
 }
 
-let playround = playMatch(playerSelection, computerSelection);
 
-let playerScore = 0;
-let computerScore = 0;
-
-
-// Increment Scores according to who wins
+// Increment scores according to who wins
 function game() {
+    
+    let matchResult = "";
+
+    let playerSelection = "";
+    let computerSelection = "";
+
+    let playerScore = 0;
+    let computerScore = 0;
 
     while (playerScore < 5 && computerScore < 5) {
 
-        playMatch(playerSelection, computerSelection);
+        // Player and computer make a choice per match.
+        playerSelection = "rock";
+        computerSelection = computerPlay();
 
-        if (playround == "win") {
+        console.log(playerSelection);
+
+        matchResult = playMatch(playerSelection, computerSelection);
+
+        if (matchResult == "win") {
 
             playerScore++;
 
-        } else if (playround == "lose") {
+        } else if (matchResult == "lose") {
 
             computerScore++;
 
-        } else if (playround == "tie") {
-
-            break
-
         }
 
+        console.log(matchAnnounce(matchResult, playerSelection, computerSelection));
+        console.log("Player Score: " + playerScore);
+        console.log("Computer Score: " + computerScore);
+
     }
+
+    console.log("Final Player Score: " + playerScore);
+    console.log("Final Computer Score: " + computerScore);
 
 }
 
 game();
 
-console.log(matchAnnounce())
-console.log("Player Score: " + playerScore);
-console.log("Computer Score: " + computerScore);
 
 
 
