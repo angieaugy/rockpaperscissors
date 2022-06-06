@@ -22,9 +22,7 @@ function computerPlay() {
 
 // Play a single match of Rock, Paper, Scissors
 function playMatch(playerSelection, computerSelection) {
-
-    playerSelection.toLowerCase(); // make all player input lowercase
-        
+    
     switch(true) {
 
         // Win Conditions
@@ -106,9 +104,7 @@ function matchAnnounce(matchResult, playerSelection, computerSelection) {
 
     return getResult(matchResult) + " " + getBreakdown(playerSelection, computerSelection)
     
-
 }
-
 
 // Increment scores according to who wins
 function game() {
@@ -124,10 +120,8 @@ function game() {
     while (playerScore < 5 && computerScore < 5) {
 
         // Player and computer make a choice per match.
-        playerSelection = "rock";
+        playerSelection = "Rock".toLowerCase();
         computerSelection = computerPlay();
-
-        console.log(playerSelection);
 
         matchResult = playMatch(playerSelection, computerSelection);
 
