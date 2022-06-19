@@ -120,7 +120,7 @@ function game() {
     while (playerScore < 5 && computerScore < 5) {
 
         // Player and computer make a choice per match.
-        playerSelection = "Rock".toLowerCase();
+        playerSelection = this.value.toLowerCase();
         computerSelection = computerPlay();
 
         matchResult = playMatch(playerSelection, computerSelection);
@@ -135,9 +135,19 @@ function game() {
 
         }
 
-        console.log(matchAnnounce(matchResult, playerSelection, computerSelection));
-        console.log("Player Score: " + playerScore);
-        console.log("Computer Score: " + computerScore);
+        const result = document.querySelector('.result')
+
+        const matchText = document.createElement('p')
+        matchText.textContent = matchAnnounce(matchResult, playerSelection, computerSelection)
+
+        const matchScore = document.createElement('p')
+        matchScore.textContent = "Player Score: " + playerScore + " || " + "Computer Score: " + computerScore
+
+        result.append(matchText, matchScore)
+
+        //console.log(matchAnnounce(matchResult, playerSelection, computerSelection));
+        //console.log("Player Score: " + playerScore);
+        //console.log("Computer Score: " + computerScore);
 
     }
 
@@ -146,9 +156,15 @@ function game() {
 
 }
 
-game();
+// game();
 
-// test branch commit
+const buttons = document.querySelectorAll('button');
+buttons.forEach(key => key.addEventListener('click', game))
+
+
+
+
+
 
 
 
