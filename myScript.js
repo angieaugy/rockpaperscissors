@@ -1,3 +1,8 @@
+let matchResult = "";
+
+let playerScore = 0;
+let computerScore = 0;
+
 // Generate computer input for match
 function computerPlay() {
 
@@ -108,22 +113,20 @@ function matchAnnounce(matchResult, playerSelection, computerSelection) {
 
 // Increment scores according to who wins
 function game() {
-    
-    let matchResult = "";
 
     let playerSelection = "";
     let computerSelection = "";
 
-    let playerScore = 0;
-    let computerScore = 0;
+    const result = document.querySelector('.result')
 
-    while (playerScore < 5 && computerScore < 5) {
+    if (playerScore < 5 && computerScore < 5) {
 
         // Player and computer make a choice per match.
         playerSelection = this.value.toLowerCase();
         computerSelection = computerPlay();
 
         matchResult = playMatch(playerSelection, computerSelection);
+        
 
         if (matchResult == "win") {
 
@@ -134,8 +137,6 @@ function game() {
             computerScore++;
 
         }
-
-        const result = document.querySelector('.result')
 
         const matchText = document.createElement('p')
         matchText.textContent = matchAnnounce(matchResult, playerSelection, computerSelection)
@@ -149,17 +150,26 @@ function game() {
         //console.log("Player Score: " + playerScore);
         //console.log("Computer Score: " + computerScore);
 
-    }
+    } else {
 
-    console.log("Final Player Score: " + playerScore);
-    console.log("Final Computer Score: " + computerScore);
+        const finalWinner = document.createElement('p')
+
+        if (playerScore > computerScore) {
+            finalWinner.textContent = "Player Wins!"
+        } else {
+            finalWinner.textContent = "Computer Wins!"
+        }
+
+        result.append(finalWinner)
+
+    }
 
 }
 
 // game();
 
 const buttons = document.querySelectorAll('button');
-buttons.forEach(key => key.addEventListener('click', game))
+buttons.forEach(button => button.addEventListener('click', game))
 
 
 
