@@ -1,0 +1,7 @@
+.result button {
+    visibility: hidden;
+}
+
+.result button.active {
+    visibility: visible;
+}

@@ -4,18 +4,22 @@
   <meta charset="UTF-8">
   <script src="myScript.js" defer></script>
   <title>Rock Paper Scissors</title>
+  <link href = "style.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <button type="submit" value="rock">Rock</button>
-  <button type="submit" value="paper">Paper</button>
-  <button type="submit" value="scissors">Scissors</button>
+  <div class="gameBoard">
+    <button type="submit" value="rock">Rock</button>
+    <button type="submit" value="paper">Paper</button>
+    <button type="submit" value="scissors">Scissors</button>
+  </div>
 
   <div class="result">
     <p id="matchResult"></p>
     <p id="matchScore">Player Score: 0 || Computer Score: 0</p>
     <p id="finalWinner"></p>
+    <button>Reset</button>
   </div>
 
 </body>

@@ -141,36 +141,59 @@ function playMatch() {
 
         }
 
+        // Display match results
         matchText.textContent = matchAnnounce(matchResult, playerSelection, computerSelection)
         matchScore.textContent = "Player Score: " + playerScore + " || " + "Computer Score: " + computerScore
 
-        result.append(matchText, matchScore)
+        if (playerScore == 5 || computerScore == 5) {
+
+            const finalWinner = document.getElementById('finalWinner')
+            const resetButton = document.querySelector('.result button')
+    
+            resetButton.classList.toggle('active')
+    
+            if (playerScore > computerScore) {
+    
+                finalWinner.textContent = "Player Wins!"
+    
+            } else {
+    
+                finalWinner.textContent = "Computer Wins!"
+    
+            }
+    
+            result.append(finalWinner, resetButton)
+    
+        }
 
     } 
 
-    if (playerScore == 5 || computerScore == 5) {
-
-        const finalWinner = document.getElementById('finalWinner')
-
-        if (playerScore > computerScore) {
-
-            finalWinner.textContent = "Player Wins!"
-
-        } else {
-
-            finalWinner.textContent = "Computer Wins!"
-
-        }
-
-        result.append(finalWinner)
-
-    }
-
 }
 
-const buttons = document.querySelectorAll('button');
-buttons.forEach(button => button.addEventListener('click', playMatch))
+// Reset Match
+function reset() {
 
+    const finalWinner = document.getElementById('finalWinner')
+    const matchText = document.getElementById('matchResult')
+    const matchScore = document.getElementById('matchScore')
+    const resetButton = document.querySelector('.result button')
+
+    matchresult = ""
+    playerScore = 0
+    computerScore = 0
+
+    finalWinner.textContent = ""
+    matchText.textContent = ""
+    matchScore.textContent = "Player Score: " + playerScore + " || " + "Computer Score: " + computerScore
+    resetButton.classList.toggle('active')
+} 
+
+
+const gameBoardButtons = document.querySelectorAll('.gameBoard button');
+gameBoardButtons.forEach(button => button.addEventListener('click', playMatch))
+
+const resetButton = document.querySelector('.result button')
+resetButton.addEventListener('click', reset)
 
 
 
