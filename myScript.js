@@ -25,8 +25,8 @@ function computerPlay() {
 
 }
 
-// Play a single match of Rock, Paper, Scissors
-function playMatch(playerSelection, computerSelection) {
+// RPS Game Logic
+function gameLogic(playerSelection, computerSelection) {
     
     switch(true) {
 
@@ -111,21 +111,24 @@ function matchAnnounce(matchResult, playerSelection, computerSelection) {
     
 }
 
-// Increment scores according to who wins
-function game() {
+// Play Match
+function playMatch() {
 
     let playerSelection = "";
     let computerSelection = "";
 
     const result = document.querySelector('.result')
+    const matchText = document.getElementById('matchResult')
+    const matchScore = document.getElementById('matchScore')
 
+    // Increment scores according to who wins
     if (playerScore < 5 && computerScore < 5) {
 
         // Player and computer make a choice per match.
         playerSelection = this.value.toLowerCase();
         computerSelection = computerPlay();
 
-        matchResult = playMatch(playerSelection, computerSelection);
+        matchResult = gameLogic(playerSelection, computerSelection);
         
 
         if (matchResult == "win") {
@@ -138,26 +141,25 @@ function game() {
 
         }
 
-        const matchText = document.createElement('p')
         matchText.textContent = matchAnnounce(matchResult, playerSelection, computerSelection)
-
-        const matchScore = document.createElement('p')
         matchScore.textContent = "Player Score: " + playerScore + " || " + "Computer Score: " + computerScore
 
         result.append(matchText, matchScore)
 
-        //console.log(matchAnnounce(matchResult, playerSelection, computerSelection));
-        //console.log("Player Score: " + playerScore);
-        //console.log("Computer Score: " + computerScore);
+    } 
 
-    } else {
+    if (playerScore == 5 || computerScore == 5) {
 
-        const finalWinner = document.createElement('p')
+        const finalWinner = document.getElementById('finalWinner')
 
         if (playerScore > computerScore) {
+
             finalWinner.textContent = "Player Wins!"
+
         } else {
+
             finalWinner.textContent = "Computer Wins!"
+
         }
 
         result.append(finalWinner)
@@ -166,10 +168,8 @@ function game() {
 
 }
 
-// game();
-
 const buttons = document.querySelectorAll('button');
-buttons.forEach(button => button.addEventListener('click', game))
+buttons.forEach(button => button.addEventListener('click', playMatch))
 
 
 
