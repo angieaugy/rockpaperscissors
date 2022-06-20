@@ -1,3 +1,9 @@
+const result = document.querySelector('.result')
+const matchText = document.getElementById('matchResult')
+const matchScore = document.getElementById('matchScore')
+const finalWinner = document.getElementById('finalWinner')
+const resetButton = document.querySelector('.result button')
+
 let matchResult = "";
 
 let playerScore = 0;
@@ -117,10 +123,6 @@ function playMatch() {
     let playerSelection = "";
     let computerSelection = "";
 
-    const result = document.querySelector('.result')
-    const matchText = document.getElementById('matchResult')
-    const matchScore = document.getElementById('matchScore')
-
     // Increment scores according to who wins
     if (playerScore < 5 && computerScore < 5) {
 
@@ -146,9 +148,6 @@ function playMatch() {
         matchScore.textContent = "Player Score: " + playerScore + " || " + "Computer Score: " + computerScore
 
         if (playerScore == 5 || computerScore == 5) {
-
-            const finalWinner = document.getElementById('finalWinner')
-            const resetButton = document.querySelector('.result button')
     
             resetButton.classList.toggle('active')
     
@@ -173,11 +172,6 @@ function playMatch() {
 // Reset Match
 function reset() {
 
-    const finalWinner = document.getElementById('finalWinner')
-    const matchText = document.getElementById('matchResult')
-    const matchScore = document.getElementById('matchScore')
-    const resetButton = document.querySelector('.result button')
-
     matchresult = ""
     playerScore = 0
     computerScore = 0
@@ -192,7 +186,6 @@ function reset() {
 const gameBoardButtons = document.querySelectorAll('.gameBoard button');
 gameBoardButtons.forEach(button => button.addEventListener('click', playMatch))
 
-const resetButton = document.querySelector('.result button')
 resetButton.addEventListener('click', reset)
 
 
