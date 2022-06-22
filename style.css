@@ -1,7 +1,51 @@
-.result button {
-    visibility: hidden;
+body {
+    font-family: "Open Sans", sans-serif;
+    background-image: radial-gradient(#212121 20%, transparent 20%),
+        radial-gradient(#212121 20%, transparent 20%);
+    background-color: #e4e4e4;
+    background-position: 0 0, 6px 6px;
+    background-size: 12px 12px;
+  }
+
+button {
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    cursor: pointer;
+    border: 3px solid;
+    padding: 0.25em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+button:active {
+box-shadow: 0px 0px 0px 0px;
+top: 5px;
+left: 5px;
 }
 
-.result button.active {
-    visibility: visible;
+p {
+margin: 30px 0;
+padding: 10px;
+text-align: center;
+width: 600px;
+background-color: #f2f3f4;
+border: 3px solid;
+text-transform: uppercase;
+letter-spacing: 2px;
+font-weight: bold;
+}
+  
+
+#reset, #finalWinner, #matchResult {
+    display: none;
+}
+
+#reset.active, #finalWinner.active, #matchResult.active {
+    display: block;
 }

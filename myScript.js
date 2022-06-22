@@ -2,7 +2,7 @@ const result = document.querySelector('.result')
 const matchText = document.getElementById('matchResult')
 const matchScore = document.getElementById('matchScore')
 const finalWinner = document.getElementById('finalWinner')
-const resetButton = document.querySelector('.result button')
+const resetButton = document.getElementById('reset')
 
 let matchResult = "";
 
@@ -126,7 +126,6 @@ function playMatch() {
     // Increment scores according to who wins
     if (playerScore < 5 && computerScore < 5) {
 
-        // Player and computer make a choice per match.
         playerSelection = this.value.toLowerCase();
         computerSelection = computerPlay();
 
@@ -143,12 +142,20 @@ function playMatch() {
 
         }
 
+        // reveal match results box at the beginning
+        if (!matchText.classList.contains("active")) {
+
+            matchText.classList.toggle('active')
+
+        }
+
         // Display match results
         matchText.textContent = matchAnnounce(matchResult, playerSelection, computerSelection)
         matchScore.textContent = "Player Score: " + playerScore + " || " + "Computer Score: " + computerScore
 
         if (playerScore == 5 || computerScore == 5) {
     
+            finalWinner.classList.toggle('active')
             resetButton.classList.toggle('active')
     
             if (playerScore > computerScore) {
@@ -160,8 +167,6 @@ function playMatch() {
                 finalWinner.textContent = "Computer Wins!"
     
             }
-    
-            result.append(finalWinner, resetButton)
     
         }
 
@@ -180,9 +185,11 @@ function reset() {
     matchText.textContent = ""
     matchScore.textContent = "Player Score: " + playerScore + " || " + "Computer Score: " + computerScore
     resetButton.classList.toggle('active')
+    finalWinner.classList.toggle('active')
+    matchText.classList.toggle('active')
 } 
 
-
+// Button event listeners
 const gameBoardButtons = document.querySelectorAll('.gameBoard button');
 gameBoardButtons.forEach(button => button.addEventListener('click', playMatch))
 
