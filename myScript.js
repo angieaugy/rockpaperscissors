@@ -1,6 +1,7 @@
 const result = document.querySelector('.result')
 const matchText = document.getElementById('matchResult')
-const matchScore = document.getElementById('matchScore')
+const printComputerScore = document.getElementById('computerScore')
+const printPlayerScore= document.getElementById('playerScore')
 const finalWinner = document.getElementById('finalWinner')
 const resetButton = document.getElementById('reset')
 
@@ -151,7 +152,8 @@ function playMatch() {
 
         // Display match results
         matchText.textContent = matchAnnounce(matchResult, playerSelection, computerSelection)
-        matchScore.textContent = "Player Score: " + playerScore + " || " + "Computer Score: " + computerScore
+        printPlayerScore.textContent = "Player Score: " + playerScore
+        printComputerScore.textContent = "Computer Score: " + computerScore
 
         if (playerScore == 5 || computerScore == 5) {
     
@@ -183,7 +185,8 @@ function reset() {
 
     finalWinner.textContent = ""
     matchText.textContent = ""
-    matchScore.textContent = "Player Score: " + playerScore + " || " + "Computer Score: " + computerScore
+    printPlayerScore.textContent = "Player Score: " + playerScore
+    printComputerScore.textContent = "Computer Score: " + computerScore
     resetButton.classList.toggle('active')
     finalWinner.classList.toggle('active')
     matchText.classList.toggle('active')

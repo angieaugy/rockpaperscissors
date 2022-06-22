@@ -5,6 +5,7 @@ body {
     background-color: #e4e4e4;
     background-position: 0 0, 6px 6px;
     background-size: 12px 12px;
+    text-align: center;
   }
 
 button {
@@ -30,22 +31,39 @@ left: 5px;
 }
 
 p {
-margin: 30px 0;
 padding: 10px;
 text-align: center;
-width: 600px;
 background-color: #f2f3f4;
 border: 3px solid;
 text-transform: uppercase;
 letter-spacing: 2px;
 font-weight: bold;
 }
+
+.results {
+    width: 600px;
+    margin: 30px auto;
+}
+
+.results button {
+    margin:auto;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.scores p {
+ flex: auto;
+}
   
 
-#reset, #finalWinner, #matchResult {
+.toggle {
     display: none;
 }
 
-#reset.active, #finalWinner.active, #matchResult.active {
+.toggle.active {
     display: block;
 }
