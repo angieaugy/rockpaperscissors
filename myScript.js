@@ -1,5 +1,6 @@
-const result = document.querySelector('.result')
+const results = document.querySelector('.results')
 const matchText = document.getElementById('matchResult')
+const selection = document.querySelector('.selection')
 const printComputerScore = document.getElementById('computerScore')
 const printPlayerScore= document.getElementById('playerScore')
 const finalWinner = document.getElementById('finalWinner')
@@ -146,14 +147,18 @@ function playMatch() {
         // reveal match results box at the beginning
         if (!matchText.classList.contains("active")) {
 
+            results.firstElementChild.classList.toggle('active')
+            selection.classList.toggle('active')
             matchText.classList.toggle('active')
 
         }
 
         // Display match results
+        selection.firstElementChild.textContent = playerSelection
+        selection.lastElementChild.textContent = computerSelection
         matchText.textContent = matchAnnounce(matchResult, playerSelection, computerSelection)
-        printPlayerScore.textContent = "Player Score: " + playerScore
-        printComputerScore.textContent = "Computer Score: " + computerScore
+        printPlayerScore.textContent = playerScore
+        printComputerScore.textContent = computerScore
 
         if (playerScore == 5 || computerScore == 5) {
     
@@ -185,11 +190,13 @@ function reset() {
 
     finalWinner.textContent = ""
     matchText.textContent = ""
-    printPlayerScore.textContent = "Player Score: " + playerScore
-    printComputerScore.textContent = "Computer Score: " + computerScore
+    printPlayerScore.textContent = playerScore
+    printComputerScore.textContent = computerScore
     resetButton.classList.toggle('active')
     finalWinner.classList.toggle('active')
     matchText.classList.toggle('active')
+    selection.classList.toggle('active')
+    results.firstElementChild.classList.toggle('active')
 } 
 
 // Button event listeners

@@ -23,6 +23,10 @@ button {
     -webkit-user-select: none;
     touch-action: manipulation;
   }
+
+button:hover {
+    background-color: #7afcae;
+}
   
 button:active {
 box-shadow: 0px 0px 0px 0px;
@@ -37,8 +41,36 @@ background-color: #f2f3f4;
 border: 3px solid;
 text-transform: uppercase;
 letter-spacing: 2px;
-font-weight: bold;
 }
+
+.gameBoard {
+    margin: 60px 0 40px 0;
+}
+
+.gameBoard button {
+    margin: 0 15px;
+    padding: 20px 40px;
+    font-weight: bold;
+}
+
+.selection {
+    justify-content: center;
+    gap: 60px;
+ 
+}
+
+.selection p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 90px;
+    font-weight: bold;
+    border: thick double;
+    box-shadow: 1px 1px 0px 0px
+
+}
+
 
 .results {
     width: 600px;
@@ -47,6 +79,7 @@ font-weight: bold;
 
 .results button {
     margin:auto;
+    font-weight: bold;
 }
 
 .scores {
@@ -58,12 +91,23 @@ font-weight: bold;
 .scores p {
  flex: auto;
 }
+
+
+#finalWinner {
+    font-weight: bold;
+    background-color: #80f1fd;
+}
   
 
 .toggle {
     display: none;
 }
 
+.selection.toggle.active {
+    display: flex;
+}
+
 .toggle.active {
     display: block;
 }
+
