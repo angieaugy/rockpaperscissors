@@ -1,5 +1,6 @@
 body {
     font-family: "Open Sans", sans-serif;
+    font-size: 19px;
     background-image: radial-gradient(#212121 20%, transparent 20%),
         radial-gradient(#212121 20%, transparent 20%);
     background-color: #e4e4e4;
@@ -9,7 +10,7 @@ body {
   }
 
 button {
-    font-size: 16px;
+    font-size: 23px;
     letter-spacing: 2px;
     text-decoration: none;
     text-transform: uppercase;
@@ -56,6 +57,7 @@ letter-spacing: 2px;
 .selection {
     justify-content: center;
     gap: 60px;
+    margin-bottom: 30px;
  
 }
 
@@ -73,7 +75,7 @@ letter-spacing: 2px;
 
 
 .results {
-    width: 600px;
+    width: 750px;
     margin: 30px auto;
 }
 
