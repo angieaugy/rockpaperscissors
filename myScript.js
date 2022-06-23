@@ -6,7 +6,7 @@ const printPlayerScore= document.getElementById('playerScore')
 const finalWinner = document.getElementById('finalWinner')
 const resetButton = document.getElementById('reset')
 
-let matchResult = "";
+let matchResult = '';
 
 let playerScore = 0;
 let computerScore = 0;
@@ -21,13 +21,13 @@ function computerPlay() {
     switch (randomValue) {
 
         case 1:
-            return "rock"
+            return 'rock'
             break;
         case 2:
-            return "paper"
+            return 'paper'
             break;
         case 3:
-            return "scissors"
+            return 'scissors'
 
     }
 
@@ -39,25 +39,25 @@ function gameLogic(playerSelection, computerSelection) {
     switch(true) {
 
         // Win Conditions
-        case playerSelection == "rock" && computerSelection == "scissors":
-        case playerSelection == "scissors" && computerSelection == "paper":
-        case playerSelection == "paper" && computerSelection == "rock":
+        case playerSelection == 'rock' && computerSelection == 'scissors':
+        case playerSelection == 'scissors' && computerSelection == 'paper':
+        case playerSelection == 'paper' && computerSelection == 'rock':
 
-            return "win"
+            return 'win'
             break;
         
         // Lose Conditions
-        case playerSelection == "rock" && computerSelection == "paper":
-        case playerSelection == "scissors" && computerSelection == "rock":
-        case playerSelection == "paper" && computerSelection == "scissors":
+        case playerSelection == 'rock' && computerSelection == 'paper':
+        case playerSelection == 'scissors' && computerSelection == 'rock':
+        case playerSelection == 'paper' && computerSelection == 'scissors':
 
-            return "lose"
+            return 'lose'
             break;
         
         // Tie Condition
         case playerSelection == computerSelection:
 
-            return "tie"
+            return 'tie'
 
     }
 
@@ -68,17 +68,17 @@ function matchAnnounce(matchResult, playerSelection, computerSelection) {
 
     function getResult(matchResult) {
 
-        if (matchResult == "win") {
+        if (matchResult == 'win') {
     
-            return "You Win!"
+            return 'You Win!'
     
-        } else if (matchResult == "lose") {
+        } else if (matchResult == 'lose') {
     
-            return "Computer Wins!"
+            return 'Computer Wins!'
     
-        } else if (matchResult == "tie") {
+        } else if (matchResult == 'tie') {
     
-            return "It\'s a Tie!"
+            return 'It\'s a Tie!'
         }
     
     }
@@ -88,42 +88,42 @@ function matchAnnounce(matchResult, playerSelection, computerSelection) {
         switch(true) {
     
             // Rock beats Scissors
-            case playerSelection == "rock" && computerSelection == "scissors":
-            case playerSelection == "scissors" && computerSelection == "rock":
+            case playerSelection == 'rock' && computerSelection == 'scissors':
+            case playerSelection == 'scissors' && computerSelection == 'rock':
     
-                return "Rock beats Scissors!";
+                return 'Rock beats Scissors!';
                 break;
             
             // Scissors beats Paper
-            case playerSelection == "scissors" && computerSelection == "paper":
-            case playerSelection == "paper" && computerSelection == "scissors":
+            case playerSelection == 'scissors' && computerSelection == 'paper':
+            case playerSelection == 'paper' && computerSelection == 'scissors':
     
-                return "Scissors beats Paper!";
+                return 'Scissors beats Paper!';
                 break;
     
             // Paper beats Rock
-            case playerSelection == "rock" && computerSelection == "paper":
-            case playerSelection == "paper" && computerSelection == "rock":
+            case playerSelection == 'rock' && computerSelection == 'paper':
+            case playerSelection == 'paper' && computerSelection == 'rock':
     
-                return "Paper beats Rock!";
+                return 'Paper beats Rock!';
                 break;
             
             default:
-                return "";
+                return '';
         
         }
     
     }
 
-    return getResult(matchResult) + " " + getBreakdown(playerSelection, computerSelection)
+    return getResult(matchResult) + ' ' + getBreakdown(playerSelection, computerSelection)
     
 }
 
 // Play Match
 function playMatch() {
 
-    let playerSelection = "";
-    let computerSelection = "";
+    let playerSelection = '';
+    let computerSelection = '';
 
     // Increment scores according to who wins
     if (playerScore < 5 && computerScore < 5) {
@@ -134,18 +134,18 @@ function playMatch() {
         matchResult = gameLogic(playerSelection, computerSelection);
         
 
-        if (matchResult == "win") {
+        if (matchResult == 'win') {
 
             playerScore++;
 
-        } else if (matchResult == "lose") {
+        } else if (matchResult == 'lose') {
 
             computerScore++;
 
         }
 
         // reveal match results box at the beginning
-        if (!matchText.classList.contains("active")) {
+        if (!matchText.classList.contains('active')) {
 
             results.firstElementChild.classList.toggle('active')
             selection.classList.toggle('active')
@@ -167,11 +167,11 @@ function playMatch() {
     
             if (playerScore > computerScore) {
     
-                finalWinner.textContent = "Player Wins!"
+                finalWinner.textContent = 'Player Wins!'
     
             } else {
     
-                finalWinner.textContent = "Computer Wins!"
+                finalWinner.textContent = 'Computer Wins!'
     
             }
     
@@ -184,12 +184,12 @@ function playMatch() {
 // Reset Match
 function reset() {
 
-    matchresult = ""
+    matchresult = ''
     playerScore = 0
     computerScore = 0
 
-    finalWinner.textContent = ""
-    matchText.textContent = ""
+    finalWinner.textContent = ''
+    matchText.textContent = ''
     printPlayerScore.textContent = playerScore
     printComputerScore.textContent = computerScore
     resetButton.classList.toggle('active')
