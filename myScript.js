@@ -1,4 +1,4 @@
-// ------ Game Logic ------ //
+// ------------------- Game Logic ------------------- //
 
 let matchResult = '';
 
@@ -127,7 +127,6 @@ function playMatch() {
 
         matchResult = gameLogic(playerSelection, computerSelection);
         
-
         if (matchResult == 'win') {
 
             playerScore++;
@@ -138,20 +137,26 @@ function playMatch() {
 
         }
 
-        update(matchResult, playerSelection, computerSelection, playerScore, computerScore)
+        drawMatchResults(matchResult, playerSelection, computerSelection, playerScore, computerScore);
 
-    } 
+        if (playerScore == 5 || computerScore == 5) {
 
-}
+            drawFinalWinner();
 
-// ------ UI ------ //
+        }
+    
+    }
+
+} 
+
+// ------------------- UI ------------------- //
 
 const results = document.querySelector('.results')
 const matchText = document.getElementById('matchResult')
 const selection = document.querySelector('.selection')
 const printComputerScore = document.getElementById('computerScore')
 const printPlayerScore= document.getElementById('playerScore')
-const finalWinner = document.getElementById('finalWinner')
+const finalWinner = document.getElementById('finalWinner') 
 
 // Button event listeners
 const gameBoardButtons = document.querySelectorAll('.gameBoard button');
@@ -161,7 +166,7 @@ const resetButton = document.getElementById('reset')
 resetButton.addEventListener('click', reset)
 
 // Update results display
-function update(matchResult, playerSelection, computerSelection, playerScore, computerScore) {
+function drawMatchResults(matchResult, playerSelection, computerSelection, playerScore, computerScore) {
 
     // reveal match results box at the beginning
     if (!matchText.classList.contains('active')) {
@@ -179,20 +184,20 @@ function update(matchResult, playerSelection, computerSelection, playerScore, co
     printPlayerScore.textContent = playerScore
     printComputerScore.textContent = computerScore
 
-    if (playerScore == 5 || computerScore == 5) {
+}
 
-        finalWinner.classList.toggle('active')
-        resetButton.classList.toggle('active')
+function drawFinalWinner() {
 
-        if (playerScore > computerScore) {
+    finalWinner.classList.toggle('active')
+    resetButton.classList.toggle('active')
 
-            finalWinner.textContent = 'Player Wins!'
+    if (playerScore > computerScore) {
 
-        } else {
+        finalWinner.textContent = 'Player Wins!'
 
-            finalWinner.textContent = 'Computer Wins!'
+    } else {
 
-        }
+        finalWinner.textContent = 'Computer Wins!'
 
     }
 
@@ -200,7 +205,7 @@ function update(matchResult, playerSelection, computerSelection, playerScore, co
 
 // Reset Match
 function reset() {
-
+    
     matchresult = ''
     playerScore = 0
     computerScore = 0
@@ -214,6 +219,7 @@ function reset() {
     matchText.classList.toggle('active')
     selection.classList.toggle('active')
     results.firstElementChild.classList.toggle('active')
+
 } 
 
 
