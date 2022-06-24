@@ -1,10 +1,4 @@
-const results = document.querySelector('.results')
-const matchText = document.getElementById('matchResult')
-const selection = document.querySelector('.selection')
-const printComputerScore = document.getElementById('computerScore')
-const printPlayerScore= document.getElementById('playerScore')
-const finalWinner = document.getElementById('finalWinner')
-const resetButton = document.getElementById('reset')
+// ------ Game Logic ------ //
 
 let matchResult = '';
 
@@ -144,40 +138,63 @@ function playMatch() {
 
         }
 
-        // reveal match results box at the beginning
-        if (!matchText.classList.contains('active')) {
-
-            results.firstElementChild.classList.toggle('active')
-            selection.classList.toggle('active')
-            matchText.classList.toggle('active')
-
-        }
-
-        // Display match results
-        selection.firstElementChild.textContent = playerSelection
-        selection.lastElementChild.textContent = computerSelection
-        matchText.textContent = matchAnnounce(matchResult, playerSelection, computerSelection)
-        printPlayerScore.textContent = playerScore
-        printComputerScore.textContent = computerScore
-
-        if (playerScore == 5 || computerScore == 5) {
-    
-            finalWinner.classList.toggle('active')
-            resetButton.classList.toggle('active')
-    
-            if (playerScore > computerScore) {
-    
-                finalWinner.textContent = 'Player Wins!'
-    
-            } else {
-    
-                finalWinner.textContent = 'Computer Wins!'
-    
-            }
-    
-        }
+        update(matchResult, playerSelection, computerSelection, playerScore, computerScore)
 
     } 
+
+}
+
+// ------ UI ------ //
+
+const results = document.querySelector('.results')
+const matchText = document.getElementById('matchResult')
+const selection = document.querySelector('.selection')
+const printComputerScore = document.getElementById('computerScore')
+const printPlayerScore= document.getElementById('playerScore')
+const finalWinner = document.getElementById('finalWinner')
+
+// Button event listeners
+const gameBoardButtons = document.querySelectorAll('.gameBoard button');
+gameBoardButtons.forEach(button => button.addEventListener('click', playMatch))
+
+const resetButton = document.getElementById('reset')
+resetButton.addEventListener('click', reset)
+
+// Update results display
+function update(matchResult, playerSelection, computerSelection, playerScore, computerScore) {
+
+    // reveal match results box at the beginning
+    if (!matchText.classList.contains('active')) {
+
+        results.firstElementChild.classList.toggle('active')
+        selection.classList.toggle('active')
+        matchText.classList.toggle('active')
+
+    }
+
+    // Display match results
+    selection.firstElementChild.textContent = playerSelection
+    selection.lastElementChild.textContent = computerSelection
+    matchText.textContent = matchAnnounce(matchResult, playerSelection, computerSelection)
+    printPlayerScore.textContent = playerScore
+    printComputerScore.textContent = computerScore
+
+    if (playerScore == 5 || computerScore == 5) {
+
+        finalWinner.classList.toggle('active')
+        resetButton.classList.toggle('active')
+
+        if (playerScore > computerScore) {
+
+            finalWinner.textContent = 'Player Wins!'
+
+        } else {
+
+            finalWinner.textContent = 'Computer Wins!'
+
+        }
+
+    }
 
 }
 
@@ -199,11 +216,9 @@ function reset() {
     results.firstElementChild.classList.toggle('active')
 } 
 
-// Button event listeners
-const gameBoardButtons = document.querySelectorAll('.gameBoard button');
-gameBoardButtons.forEach(button => button.addEventListener('click', playMatch))
 
-resetButton.addEventListener('click', reset)
+
+
 
 
 
